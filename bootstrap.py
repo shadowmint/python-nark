@@ -1,4 +1,4 @@
-# Copyright 2012 Douglas Linder
+# Copyright 2013 Douglas Linder
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -50,7 +50,7 @@ class Bootstrap():
       going on, turn __DEBUG to true.
   """
 
-  __DEBUG = True
+  __DEBUG = False
   """ Output debug messages? """
   
   __libPattern = ["lib$", "src$"]

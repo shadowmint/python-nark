@@ -11,18 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from log import Log
+from log import LogManager
 
 class Assert:
   """ Test helper """
   
   def __init__(self):
-    self._logger = Log()
-    #if self._logger is None:
-      #instance = nark.Log()
-      #instance.setLogWriter(nark.log.CliWriter())
-      #nark.Register.get().bind(instance)
-    #self._logger = nark.Log.get()
+    self._logger = LogManager.get_logger(2)
     
   def true(self, value, message):
     if not value:
@@ -49,7 +44,7 @@ class Assert:
       self._fail("%s (value was None)" % (message, str(value)))
       
   def trace(self, message):
-    self._logger.trace(message)
+    self._logger.info(message)
       
   def _fail(self, message):
     try:

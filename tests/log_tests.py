@@ -11,14 +11,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from _assert import Assert
-from enum import Enum, Bitflags
-from log import LogManager
+import unittest
+import bootstrap
+import nark
 
 
-__all__ = [
-  Enum,
-  Bitflags,
-  Assert,
-  LogManager,
-]
+class LogTests(unittest.TestCase):
+
+  def test_can_create_logger(self):
+    a = nark.Assert()
+    i = nark.LogManager.get_logger()
+    a.not_null(i, "Unable to create log instance")
+
+  def test_can_log_message(self):
+    a = nark.Assert()
+    i = nark.LogManager.get_logger()
+    i.debug("Hello %s", "world")
+    i.info("Hello %s", "world")
+    i.warning("Hello %s", "world")
+    i.error("Hello %s", "world")
+    i.critical("Hello %s", "world")
+
+
+if __name__ == "__main__":
+  unittest.main()
