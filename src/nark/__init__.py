@@ -11,9 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from _assert import Assert
-from enum import Enum, Bitflags
-from log import LogManager
+from __future__ import absolute_import
+from ._assert import Assert
+from .enum import Enum, Bitflags
+from .log import LogManager
+from .factory import Factory
+from .assets import Assets
 
 
 __all__ = [
@@ -21,4 +24,6 @@ __all__ = [
   Bitflags,
   Assert,
   LogManager,
+  Factory,
+  Assets,
 ]

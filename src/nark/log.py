@@ -32,7 +32,7 @@ class LogManager(object):
   def _logger(cls, name):
     try:
       cache = cls.__loggers 
-    except AttributeError, e:
+    except AttributeError:
       cls.__loggers = {}
     if not name in cls.__loggers:
       cls.__loggers[name] = LogManager._new_logger(name)

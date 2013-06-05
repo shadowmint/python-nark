@@ -11,7 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from log import LogManager
+from __future__ import absolute_import
+from .log import LogManager
 
 class Assert:
   """ Test helper """
@@ -31,7 +32,7 @@ class Assert:
     if v1 == v2:
       self._fail("%s (%s != %s)" % (message, str(v1), str(v2)))
       
-  def equal(self, v1, v2, message):
+  def equals(self, v1, v2, message):
     if not v1 == v2:
       self._fail("%s (%s != %s)" % (message, str(v1), str(v2)))
       
@@ -49,6 +50,7 @@ class Assert:
   def _fail(self, message):
     try:
       assert False
-    except Exception, e:
-      self._logger.error(message, e)
+    except Exception:
+      err = sys.exc_info()[1]
+      self._logger.error(message, err)
     assert False
