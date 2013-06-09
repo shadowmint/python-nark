@@ -1,0 +1,5 @@
+ITEM=`pwd`/tests/runner.py
+echo $ITEM
+python2.7 $ITEM
+python3.3 $ITEM
+pypy $ITEM
