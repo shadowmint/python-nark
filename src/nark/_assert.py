@@ -12,7 +12,7 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from .log import LogManager
+from .log_manager import LogManager
 
 class Assert:
   """ Test helper """

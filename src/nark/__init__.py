@@ -14,7 +14,7 @@
 from __future__ import absolute_import
 from ._assert import Assert
 from .enum import Enum, Bitflags
-from .log import LogManager
+from .log_manager import LogManager
 from .factory import Factory
 from .assets import Assets
 
