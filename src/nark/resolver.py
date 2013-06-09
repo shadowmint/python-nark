@@ -1,7 +1,7 @@
 from __future__ import absolute_import
-from implements import *
+from .implements import implements
 
-class Container(object):
+class Resolver(object):
 
   def __init__(self):
     self.bindings = {}
@@ -55,7 +55,7 @@ class HasDeps(object):
     self.valuer = IValuer
     self.printer = IPrinter
 
-c = Container()
+c = Resolver()
 c.register(Printer)
 c.register(Valuer)
 
@@ -63,7 +63,7 @@ instance = HasDeps()
 c.resolve(instance)
 instance.printer.prints(instance.valuer.value(10, 10))
 
-c = Container()
+c = Resolver()
 c.register(Crazy)
 
 instance = HasDeps()

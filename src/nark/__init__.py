@@ -17,6 +17,8 @@ from .enum import Enum, Bitflags
 from .log_manager import LogManager
 from .factory import Factory
 from .assets import Assets
+from .implements import implements
+from .resolver import Resolver
 
 
 __all__ = [
@@ -26,4 +28,6 @@ __all__ = [
   LogManager,
   Factory,
   Assets,
+  Resolver,
+  implements
 ]
