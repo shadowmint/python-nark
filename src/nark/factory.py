@@ -43,17 +43,27 @@ class Factory():
     self.__watch = watching
 
   def load(self, path):
-    """ Load the module """
+    """ Load the module 
+
+        Notice exceptions are throw upwards, while missing/bad file
+        is a return code of False. 
+    """
     self.__path = path
     if self.__hash is None:
       m = hashlib.md5()
       m.update(self.__path)
       self.__hash = m.hexdigest()
-    self.__timestamp = os.path.getmtime(self.__path)
-    with open(self.__path, 'r') as content_file:
-      content = content_file.read()
+    try:
+      self.__timestamp = os.path.getmtime(self.__path)
+      with open(self.__path, 'r') as content_file:
+        content = content_file.read()
+    except OSError:
+      return False 
+    except IOError:
+      return False 
     self.__module = imp.new_module(self.__hash)
     exec(content) in self.__module.__dict__
+    return True
 
   def __check(self):
     """ Check for updates to file since last update """
