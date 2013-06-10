@@ -51,7 +51,7 @@ class Factory():
     self.__path = path
     if self.__hash is None:
       m = hashlib.md5()
-      m.update(self.__path)
+      m.update(self.__path.encode('utf-8'))
       self.__hash = m.hexdigest()
     try:
       self.__timestamp = os.path.getmtime(self.__path)
@@ -62,7 +62,9 @@ class Factory():
     except IOError:
       return False 
     self.__module = imp.new_module(self.__hash)
-    exec(content) in self.__module.__dict__
+    global_vars = {}
+    exec(content, global_vars, None)
+    self.__module = global_vars
     return True
 
   def __check(self):
@@ -75,4 +77,4 @@ class Factory():
   def prop(self, name):
     """ Return a property from the loaded module """
     self.__check()
-    return self.__module.__dict__[name]
+    return self.__module[name]
