@@ -30,16 +30,26 @@ class Assets():
     """ Appropriately resolves a path in the form blah, blah, blah. 
         
         Base is attached as the root to this set of path elements.
-        
-        Throws an error at this level if the requested file doesn't
-        exist.
+
+        Returns false on failure to find the given file.
     """
     rtn = os.path.join(self.__base, *args)
     if not self.__exists(rtn):
-      raise Exception("Bad path: %s (base: %s)" % (rtn, self.__base))
+      raise BadFileException("Invalid file: '%s'" % rtn)
     return rtn
     
+  def exists(self, *args):
+    """ Returns false if the file does not exist """
+    rtn = os.path.join(self.__base, *args)
+    if not self.__exists(rtn):
+      return False
+    return rtn
+
   def __exists(self, path):
     """ Check a path exists """
     rtn = os.path.isdir(path) or (os.path.isfile(path) and os.access(path, os.R_OK))
     return rtn
+
+
+class BadFileException(Exception):
+  pass

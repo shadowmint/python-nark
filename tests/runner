@@ -1,5 +1,9 @@
-ITEM=`pwd`/tests/runner.py
-echo $ITEM
+#!/bin/sh
+if [ -f runner ]; then
+  ITEM=`pwd`/runner.py
+else
+  ITEM=`pwd`/tests/runner.py
+fi
 
 echo "-- With python2.7"
 python2.7 $ITEM 2>&1 | grep ^ERROR

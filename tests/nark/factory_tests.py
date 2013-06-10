@@ -35,14 +35,14 @@ class Tests(unittest.TestCase):
     fp.write("text = \"Hello World\"")
     fp.close()
 
-    time.sleep(1)
+    time.sleep(0.1)
 
     i.load(path)
     value = i.prop("text")
 
     t.equals(value, "Hello World", "Failed to read module value")
 
-    time.sleep(1)
+    time.sleep(0.1)
 
     fp = open(path, "w")
     fp.write("text = \"Hello WORLD\"")
@@ -66,7 +66,7 @@ class Tests(unittest.TestCase):
 
     t.equals(value, "Hello World", "Failed to read module value")
 
-    time.sleep(1)
+    time.sleep(0.1)
 
     fp = open(path, "w")
     fp.write("text = \"Hello WORLD\"")

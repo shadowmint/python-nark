@@ -16,7 +16,7 @@ from ._assert import Assert
 from .enum import enum, bitflags
 from .log_manager import LogManager
 from .factory import Factory
-from .assets import Assets
+from .assets import Assets, BadFileException
 from .implements import implements, ImplementsException
 from .resolver import Resolver, resolve
 from .exception import exception
@@ -29,6 +29,7 @@ __all__ = [
   'LogManager',
   'Factory',
   'Assets',
+  'BadFileException',
   'Resolver',
   'resolve',
   'implements',
