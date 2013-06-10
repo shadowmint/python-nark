@@ -1,5 +1,11 @@
 ITEM=`pwd`/tests/runner.py
 echo $ITEM
-python2.7 $ITEM
-python3.3 $ITEM
-pypy $ITEM
+
+echo "-- With python2.7"
+python2.7 $ITEM 2>&1 | grep ^ERROR
+
+echo "-- With python3.3"
+python3.3 $ITEM 2>&1 | grep ^ERROR
+
+echo "-- With pypy"
+pypy $ITEM 2>&1 | grep ^ERROR
