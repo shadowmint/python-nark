@@ -20,19 +20,19 @@ class EnumTests(unittest.TestCase):
 
   def test_can_create_enum(self):
     a = nark.Assert()
-    i = nark.Enum("ONE", "TWO")
+    i = nark.enum("ONE", "TWO")
     a.not_null(i, "Enum instance returned null")
     a.not_equal(i.ONE, i.TWO, "Enum values are not unique")
 
   def test_can_create_bitflags(self):
     a = nark.Assert()
-    i = nark.Bitflags("ONE", "TWO")
+    i = nark.bitflags("ONE", "TWO")
     a.not_null(i, "Enum instance returned null")
     a.not_equal(i.ONE, i.TWO, "Enum values are not unique")
 
   def test_bitflags_really_are_bitflags(self):
     a = nark.Assert()
-    i = nark.Bitflags("ONE", "TWO", "THREE", "FOUR")
+    i = nark.bitflags("ONE", "TWO", "THREE", "FOUR")
     value1 = i.ONE | i.TWO
     value2 = i.TWO | i.THREE | i.FOUR
     a.true(value1 & i.ONE, "Bitflags don't merge correctly (&)")

@@ -11,27 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import absolute_import
-from ._assert import Assert
-from .enum import enum, bitflags
-from .log_manager import LogManager
-from .factory import Factory
-from .assets import Assets
-from .implements import implements, ImplementsException
-from .resolver import Resolver, resolve
-from .exception import exception
+import sys
 
-
-__all__ = [
-  'enum',
-  'bitflags',
-  'Assert',
-  'LogManager',
-  'Factory',
-  'Assets',
-  'Resolver',
-  'resolve',
-  'implements',
-  'ImplementsException',
-  'exception',
-]
+def exception():
+  """ Fetch the last exception in an except clause in python2/3 """
+  return sys.exc_info()[1]

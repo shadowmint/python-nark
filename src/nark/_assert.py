@@ -13,6 +13,8 @@
 
 from __future__ import absolute_import
 from .log_manager import LogManager
+from .exception import exception
+
 
 class Assert:
   """ Test helper """
@@ -51,6 +53,6 @@ class Assert:
     try:
       assert False
     except Exception:
-      err = sys.exc_info()[1]
-      self._logger.error(message, err)
+      err = exception()
+      self._logger.error(message + ": %s", err)
     assert False

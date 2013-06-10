@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-def Enum(*sequential, **named):
+def enum(*sequential, **named):
   """ Enum helper to generate integer values 
       usage: ENUM_TYPE = enum(VALUE, VALUE2, VALUE3)
       
@@ -20,7 +20,7 @@ def Enum(*sequential, **named):
   enums = dict(zip(sequential, range(len(sequential))), **named) 
   return type('Enum', (), enums)
 
-def Bitflags(*sequential, **named):
+def bitflags(*sequential, **named):
   """ Enum helper to generate bit-flag values 
       usage: ENUM_TYPE = bitflags(VALUE, VALUE2, VALUE3)
       
