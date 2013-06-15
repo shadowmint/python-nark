@@ -68,6 +68,12 @@ class Worker(object):
     """ This function is invoked in the local process after the process is spawned """
     pass
 
+  def context(self):
+    """ If an event loop thread is started, this is run in it first.
+        Use this for any thread specific init. eg. Database handles
+    """
+    pass
+
   def start(self, data=None):
     """ Start a new process and run the worker in it """
 
@@ -80,13 +86,13 @@ class Worker(object):
     self._process.start()
 
     # Local init
-    self.api = WorkerApi(lmsg)
+    self.api = WorkerApi(self, lmsg)
     self.api.listen(WorkerEvents.TERMINATE, self.api.stop)
     self.local(data)
 
   def _spawn(self, rmsg, data):
     """ Spawn handler goes here, because windows can't pickle local functions """
-    self.api = WorkerApi(rmsg, True)
+    self.api = WorkerApi(self, rmsg, True)
     self.api.listen(WorkerEvents.TERMINATE, self.api.stop)
     self.remote(data)
     self.api.trigger(WorkerEvents.TERMINATE)
@@ -95,10 +101,12 @@ class Worker(object):
 class WorkerApi(object):
   """ This is the api that the worker itself has access to. """
 
-  def __init__(self, messenger, remote=False):
+  def __init__(self, worker, messenger, remote=False):
     self.__remote = remote
     self.__messenger = messenger
     self.__dead = False
+    self.__thread_init = False
+    self.__worker = worker
 
   def listen(self, signal, callback):
     self.__messenger.listen(signal, callback)
@@ -138,6 +146,12 @@ class WorkerApi(object):
     if wait:
       self.__event_loop.join()
 
+  def context(self):
+    """ Invoke context on the parent """
+    if not self.__thread_init:
+      self.__thread_init = True
+      self.__worker.context()
+
 
 class WorkerEventThread(threading.Thread):
   """ Runs the event loop in its own thread """
@@ -147,8 +161,8 @@ class WorkerEventThread(threading.Thread):
     self.api = api
 
   def run(self):
+    self.api.context()
     while self.api.alive():
-      print("Poll from: %s" % self.api.ident())
       if not self.api.poll():
         break
       time.sleep(0.1)  # Don't spam
