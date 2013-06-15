@@ -17,7 +17,7 @@ from .listener import Listener
 from nark import LogManager, exception
 
 
-class Messenger:
+class Messenger(object):
   """ Messenger is a event handler / trigger to pass between processes.
   
       To use messenger, you would typically do something like this:

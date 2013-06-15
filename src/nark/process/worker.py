@@ -67,27 +67,29 @@ class Worker(object):
   def local(self, data):
     """ This function is invoked in the local process after the process is spawned """
     pass
-  
+
   def start(self, data=None):
     """ Start a new process and run the worker in it """
-    def spawn(worker, rmsg, data):
-      worker.api = WorkerApi(rmsg, True)
-      worker.api.listen(WorkerEvents.TERMINATE, self.api.stop)
-      worker.remote(data)
-      worker.api.trigger(WorkerEvents.TERMINATE)
 
     local, remote = Pipe()
     lmsg = Messenger(local)
     rmsg = Messenger(remote)
 
     # Remote init
-    self._process = Process(target=spawn, args=(self, rmsg, data))
+    self._process = Process(target=self._spawn, args=(rmsg, data))
     self._process.start()
 
     # Local init
     self.api = WorkerApi(lmsg)
     self.api.listen(WorkerEvents.TERMINATE, self.api.stop)
     self.local(data)
+
+  def _spawn(self, rmsg, data):
+    """ Spawn handler goes here, because windows can't pickle local functions """
+    self.api = WorkerApi(rmsg, True)
+    self.api.listen(WorkerEvents.TERMINATE, self.api.stop)
+    self.remote(data)
+    self.api.trigger(WorkerEvents.TERMINATE)
 
 
 class WorkerApi(object):

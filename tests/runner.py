@@ -99,8 +99,7 @@ class TestHelper:
       cmd = "PYTHONPATH=" + os.path.abspath(self.__lib) + " "
       cmd += sys.executable + " " + os.path.abspath(test['test'])
     else:
-      cmd = "PYTHONPATH=" + os.path.abspath(self.__lib) + " "
-      cmd += sys.executable + " " + os.path.abspath(test['test'])
+      cmd = sys.executable + " " + os.path.abspath(test['test'])
     print(cmd)
     status = call(cmd, shell=True)
     if (status == 0):

@@ -82,40 +82,6 @@ class MessengerTests(unittest.TestCase):
     
     a, lm, rm = self.setup()
     
-    # ID codes
-    EVENTS = enum (
-      "REQUEST", 
-      "RESPONSE",
-      "KILL",
-    )
-    
-    # Worker: Send response on request
-    class Remote:
-      
-      def __init__(self, messenger):  
-        self._dead = False
-        self.msg = messenger
-        self.msg.listen(EVENTS.REQUEST, self.handle_request)
-        self.msg.listen(EVENTS.KILL, self.handle_kill)
-        
-      def handle_request(self, data):
-        self.msg.trigger(EVENTS.RESPONSE, "Hello World")
-        a.trace("Got request, sent response")
-      
-      def handle_kill(self):
-        self._dead = True
-        a.trace("Got kill, stopping")
-        
-      def run(self):
-        while not self._dead:
-          self.msg.poll()
-          time.sleep(0.05)
-        
-    # Spawn the process with this
-    def remote_process(messenger):
-      worker = Remote(messenger)
-      worker.run()
-        
     # Local handler
     self.resp_msg = ""
     def local_callback(data):
@@ -124,7 +90,7 @@ class MessengerTests(unittest.TestCase):
     lm.listen(EVENTS.RESPONSE, local_callback)
     
     # Spawn process
-    p = Process(target=remote_process, args=(rm,))
+    p = Process(target=remote_process_2, args=(rm,))
     p.start()
     
     # Trigger event that should generate a callback
@@ -143,44 +109,11 @@ class MessengerTests(unittest.TestCase):
   def test_can_talk_between_processes_without_spamming(self):
     
     a, lm, rm = self.setup()
-    
-    # ID codes
-    EVENTS = enum (
-      "REQUEST", 
-      "RESPONSE",
-      "KILL",
-    )
-    
-    # Worker: Send response on request
-    class Remote:
-      
-      def __init__(self, messenger):  
-        self._dead = False
-        self.msg = messenger
-        self.msg.listen(EVENTS.REQUEST, self.handle_request)
-        self.msg.listen(EVENTS.KILL, self.handle_kill)
-        
-      def handle_request(self, data):
-        self.msg.trigger(EVENTS.RESPONSE, "Hello World " + str(data))
-        a.trace("Got request (%d), sent response" % data)
-      
-      def handle_kill(self):
-        self._dead = True
-        a.trace("Got kill, stopping")
-        
-      def run(self):
-        while not self._dead:
-          self.msg.poll(3)
-          time.sleep(0.05)
-        
-    # Spawn the process with this
-    def remote_process(messenger):
-      worker = Remote(messenger)
-      worker.run()
-        
+
     # Local handler
     self.resp_msg = 0
     def local_callback(data):
+      a = Assert()
       a.trace("Response: %s" % data)
       self.resp_msg += 1
       for i in range(5):
@@ -208,6 +141,8 @@ class MessengerTests(unittest.TestCase):
  
   def setup(self):
     local, remote = Pipe()
+    self.local = local
+    self.remote = remote
     lm = process.Messenger(local)
     rm = process.Messenger(remote)
     a = Assert()
@@ -216,6 +151,76 @@ class MessengerTests(unittest.TestCase):
   def teardown(self, m1, m2):
     m1.close()
     m2.close()
-    
+
+
+# ID codes
+EVENTS = enum (
+  "REQUEST",
+  "RESPONSE",
+  "KILL",
+)
+
+
+# Worker: Send response on request
+class Remote:
+
+  def __init__(self, messenger):
+    self._dead = False
+    self.msg = messenger
+    self.msg.listen(EVENTS.REQUEST, self.handle_request)
+    self.msg.listen(EVENTS.KILL, self.handle_kill)
+
+  def handle_request(self, data):
+    a = Assert()
+    self.msg.trigger(EVENTS.RESPONSE, "Hello World " + str(data))
+    a.trace("Got request (%d), sent response" % data)
+
+  def handle_kill(self):
+    a = Assert()
+    self._dead = True
+    a.trace("Got kill, stopping")
+
+  def run(self):
+    while not self._dead:
+      self.msg.poll(3)
+      time.sleep(0.05)
+
+
+# Spawn the process with this
+def remote_process(messenger):
+  worker = Remote(messenger)
+  worker.run()
+
+
+# Worker: Send response on request
+class Remote_2:
+
+  def __init__(self, messenger):
+    self._dead = False
+    self.msg = messenger
+    self.msg.listen(EVENTS.REQUEST, self.handle_request)
+    self.msg.listen(EVENTS.KILL, self.handle_kill)
+
+  def handle_request(self, data):
+    self.msg.trigger(EVENTS.RESPONSE, "Hello World")
+    a.trace("Got request, sent response")
+
+  def handle_kill(self):
+    self._dead = True
+    a.trace("Got kill, stopping")
+
+  def run(self):
+    while not self._dead:
+      self.msg.poll()
+      time.sleep(0.05)
+
+
+# Spawn the process with this
+def remote_process_2(messenger):
+  worker = Remote_2(messenger)
+  worker.run()
+
+
+
 if __name__ == "__main__":
   unittest.main()
