@@ -45,6 +45,10 @@ class Assert:
   def not_null(self, value, message):
     if value is None:
       self._fail("%s (value was None)" % (message, str(value)))
+
+  def contains(self, items, item, message):
+    if item not in items:
+      self._fail("%s (%s was not in the list %r)" % (message, str(item), items))
       
   def trace(self, message):
     self._logger.info(message)

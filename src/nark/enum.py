@@ -14,6 +14,7 @@
 def enum(*sequential, **named):
   """ Enum helper to generate integer values 
       usage: ENUM_TYPE = enum(VALUE, VALUE2, VALUE3)
+         or: EnumType = enum(VALUE="V1", VALUE2=3)
       
       The result will be VALUE = 1, VALUE2 = 2, etc.
   """
@@ -23,6 +24,7 @@ def enum(*sequential, **named):
 def bitflags(*sequential, **named):
   """ Enum helper to generate bit-flag values 
       usage: ENUM_TYPE = bitflags(VALUE, VALUE2, VALUE3)
+         or: EnumType = bitflags(VALUE1, VALUE2, VALUE3=0x0ff)
       
       The result will be VALUE = 0x1, VALUE2 = 0x2, VALUE3 = 0x4, etc.
   """

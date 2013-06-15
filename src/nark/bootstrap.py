@@ -53,13 +53,13 @@ class Bootstrap():
   __DEBUG = True
   """ Output debug messages? """
   
-  __libPattern = ["lib$", "src$"]
+  __libPattern = ["lib$", "src$", ".*-[0-9]+\.[0-9]+.*"]
   """ Attach dir matching this to the python path """
 
   __zipPattern = ".*\.zip$"
   """ Attach zip files directly to the path """
 
-  __targets = []
+  __targets = {}
   """ List of targets found """
 
   __queue = deque()
@@ -82,7 +82,7 @@ class Bootstrap():
           for p in self.__libPattern:
             if not re.match(p, name) is None:
               found = True
-              self.__targets.append(fullname)
+              self.__targets[fullname] = True
               self.__queue.append(fullname)
               self.__trace("Found library folder at '%s'" % fullname)
               break
@@ -104,7 +104,7 @@ class Bootstrap():
         if isdir(fullname):
           for p in self.__libPattern:
             if not re.match(p, name) is None:
-              self.__targets.append(fullname)
+              self.__targets[fullname] = True
               self.__trace("Found a target at '%s'" % fullname)
             else:
               self.__queue.append(fullname)
@@ -115,7 +115,7 @@ class Bootstrap():
     sys.path.extend(self.__targets)
     for path in self.__targets:
       self.__trace("Added target to path: %s" % path)
-    for path in self.__targets:
+    for path in self.__targets.keys():
       path = abspath(path)
       if os.path.exists(path):
         for name in os.listdir(path):
@@ -128,7 +128,8 @@ class Bootstrap():
   def load(self, extras):
     """ Load library dirs, including from extras """
     self.__queue.extend(extras)
-    self.__targets.extend(extras)
+    for e in extras:
+      self.__targets[e] = True
     self.__seekRoot()
     while len(self.__queue) > 0:
       path = self.__queue.popleft()

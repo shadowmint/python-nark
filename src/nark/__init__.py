@@ -20,6 +20,8 @@ from .assets import Assets, BadFileException
 from .implements import implements, ImplementsException
 from .resolver import Resolver, resolve
 from .exception import exception
+from .run import run, BadCommandException
+import nark.process
 
 
 __all__ = [
@@ -35,4 +37,7 @@ __all__ = [
   'implements',
   'ImplementsException',
   'exception',
+  'run',
+  'BadCommandException',
+  'process',
 ]
