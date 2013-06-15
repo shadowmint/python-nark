@@ -34,7 +34,8 @@ class Listener:
         cb()
       else:
         cb(listener.data)
-    except Exception, e:
+    except Exception:
+      e = exception()
       log.error("Failed to invoke callback: %s" % e)
       
   def matches(self, event):

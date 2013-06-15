@@ -102,7 +102,8 @@ class Messenger:
     item = Event(uid, event)
     try:
       self._pipe.send(item)
-    except Exception, e:
+    except Exception:
+      e = exception()
       log.error("Failed to trigger event: %d: %s" % (uid, e))
 
   def poll(self, limit=0):
@@ -128,7 +129,8 @@ class Messenger:
             if i.matches(data):
                 try:
                   i.invoke(data)
-                except Exception, e:
+                except Exception:
+                  e = exception()
                   log.error("Failed to invoked bound trigger: %s" % e)
                 processed += 1
         if processed == 0:

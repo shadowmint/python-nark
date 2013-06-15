@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0e32710-363e-45f7-b3b7-feaec41e17a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/nark/process/.worker_tests.py.swp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/nark/factory_tests.py" afterPath="$PROJECT_DIR$/tests/nark/factory_tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/process/listener.py" afterPath="$PROJECT_DIR$/src/nark/process/listener.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/process/messenger.py" afterPath="$PROJECT_DIR$/src/nark/process/messenger.py" />
     </list>
     <ignored path="nark.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371281022860" ignored="false" />
     <file path="/worker.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371284957934" ignored="false" />
     <file path="/__init__.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371282295535" ignored="false" />
-    <file path="/listener.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371282367494" ignored="false" />
-    <file path="/messenger.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371283592012" ignored="false" />
+    <file path="/listener.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371285838651" ignored="false" />
+    <file path="/messenger.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371285799577" ignored="false" />
     <file path="/factory.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371285669029" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="factory.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="factory.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nark/factory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="0" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.7791932">
+            <state line="73" column="0" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -67,7 +66,7 @@
       <file leaf-file-name="messenger.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nark/process/messenger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="55" selection-start="3847" selection-end="3847" vertical-scroll-proportion="0.0">
+            <state line="36" column="6" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#578#616#0" expanded="true" />
               </folding>
@@ -75,10 +74,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listener.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="listener.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nark/process/listener.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="5" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.0">
+            <state line="36" column="20" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.611465">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="event.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nark/process/event.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,10 +111,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/nark/process/__init__.py" />
-        <option value="$PROJECT_DIR$/src/nark/process/listener.py" />
-        <option value="$PROJECT_DIR$/src/nark/process/messenger.py" />
         <option value="$PROJECT_DIR$/src/nark/process/worker.py" />
         <option value="$PROJECT_DIR$/src/nark/factory.py" />
+        <option value="$PROJECT_DIR$/src/nark/process/messenger.py" />
+        <option value="$PROJECT_DIR$/src/nark/process/listener.py" />
       </list>
     </option>
   </component>
@@ -227,7 +235,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -312,22 +320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nark/process/listener.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="5" selection-start="1110" selection-end="1110" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nark/process/messenger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="55" selection-start="3847" selection-end="3847" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#578#616#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nark/process/worker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="29" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
@@ -339,7 +331,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nark/factory.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="0" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.7791932">
+        <state line="73" column="0" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nark/process/event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nark/process/messenger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="6" selection-start="1232" selection-end="1232" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#578#616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nark/process/listener.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="20" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.611465">
           <folding />
         </state>
       </provider>
