@@ -66,11 +66,13 @@ class Tests(unittest.TestCase):
 
     t.equals(value, "Hello World", "Failed to read module value")
 
-    time.sleep(0.5)
+    time.sleep(1.0)
 
     fp = open(path, "w")
     fp.write("text = \"Hello WORLD\"")
     fp.close()
+
+    time.sleep(1.0)
 
     value = i.prop("text")
     

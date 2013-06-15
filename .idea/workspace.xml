@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0e32710-363e-45f7-b3b7-feaec41e17a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/nark/run.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/__init__.py" afterPath="$PROJECT_DIR$/src/nark/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/_assert.py" afterPath="$PROJECT_DIR$/src/nark/_assert.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/assets.py" afterPath="$PROJECT_DIR$/src/nark/assets.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/bootstrap.py" afterPath="$PROJECT_DIR$/src/nark/bootstrap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/enum.py" afterPath="$PROJECT_DIR$/src/nark/enum.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/resolver.py" afterPath="$PROJECT_DIR$/src/nark/resolver.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/nark/process/.worker_tests.py.swp" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/nark/factory_tests.py" afterPath="$PROJECT_DIR$/tests/nark/factory_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nark.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,6 +13,7 @@
     <file path="/__init__.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371282295535" ignored="false" />
     <file path="/listener.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371282367494" ignored="false" />
     <file path="/messenger.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371283592012" ignored="false" />
+    <file path="/factory.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371285669029" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +33,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="worker.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="worker.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nark/process/worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="29" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.18471338">
+            <state line="31" column="29" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#578#616#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="factory.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nark/factory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="0" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.7791932">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,6 +106,7 @@
         <option value="$PROJECT_DIR$/src/nark/process/listener.py" />
         <option value="$PROJECT_DIR$/src/nark/process/messenger.py" />
         <option value="$PROJECT_DIR$/src/nark/process/worker.py" />
+        <option value="$PROJECT_DIR$/src/nark/factory.py" />
       </list>
     </option>
   </component>
@@ -220,7 +227,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -323,10 +330,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nark/process/worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="29" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.18471338">
+        <state line="31" column="29" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#578#616#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nark/factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="0" selection-start="2064" selection-end="2064" vertical-scroll-proportion="0.7791932">
+          <folding />
         </state>
       </provider>
     </entry>
