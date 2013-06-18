@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0e32710-363e-45f7-b3b7-feaec41e17a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nark/process/worker.py" afterPath="$PROJECT_DIR$/src/nark/process/worker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f0e32710-363e-45f7-b3b7-feaec41e17a0" name="Default" comment="" />
     <ignored path="nark.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371298363750" ignored="false" />
+    <file path="/Dummy.txt" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371309703120" ignored="false" />
     <file path="/worker.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371298532066" ignored="false" />
     <file path="/__init__.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371282295535" ignored="false" />
     <file path="/listener.py" changelist="f0e32710-363e-45f7-b3b7-feaec41e17a0" time="1371285838651" ignored="false" />
@@ -37,7 +34,7 @@
       <file leaf-file-name="worker.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nark/process/worker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="30" selection-start="3072" selection-end="3072" vertical-scroll-proportion="0.53419596">
+            <state line="126" column="17" selection-start="4059" selection-end="4059" vertical-scroll-proportion="0.49454546">
               <folding />
             </state>
           </provider>
@@ -46,7 +43,7 @@
       <file leaf-file-name="runner.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="10" selection-start="3119" selection-end="3119" vertical-scroll-proportion="0.0">
+            <state line="99" column="10" selection-start="3043" selection-end="3043" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -55,7 +52,7 @@
       <file leaf-file-name="worker_tests.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/nark/process/worker_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="22" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+            <state line="11" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,7 +79,7 @@
       <file leaf-file-name="messenger.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nark/process/messenger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="21" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
+            <state line="20" column="16" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,7 +97,7 @@
       <file leaf-file-name="messenger_tests.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/nark/process/messenger_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="19" selection-start="2589" selection-end="2589" vertical-scroll-proportion="0.0">
+            <state line="45" column="8" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,8 +142,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="2000" />
+    <option name="y" value="181" />
     <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
@@ -176,7 +173,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,16 +287,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -388,14 +385,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="2000" y="181" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2530395" sideWeight="0.670068" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25675675" sideWeight="0.670068" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -550,35 +547,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/nark/process/messenger_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="19" selection-start="2589" selection-end="2589" vertical-scroll-proportion="0.0">
+        <state line="45" column="8" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/nark/process/worker_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+        <state line="11" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nark/process/messenger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
+        <state line="20" column="16" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="10" selection-start="3119" selection-end="3119" vertical-scroll-proportion="0.0">
+        <state line="99" column="10" selection-start="3043" selection-end="3043" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nark/process/worker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="30" selection-start="3072" selection-end="3072" vertical-scroll-proportion="0.53419596">
+        <state line="126" column="17" selection-start="4059" selection-end="4059" vertical-scroll-proportion="0.49454546">
           <folding />
         </state>
       </provider>
