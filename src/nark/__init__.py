@@ -18,7 +18,7 @@ from .log_manager import LogManager
 from .factory import Factory
 from .assets import Assets, BadFileException
 from .implements import implements, ImplementsException
-from .resolver import Resolver, resolve
+from .resolve import ResolveFailedException, Scope, resolve
 from .exception import exception
 from .run import run, BadCommandException
 import nark.process
@@ -32,7 +32,8 @@ __all__ = [
   'Factory',
   'Assets',
   'BadFileException',
-  'Resolver',
+  'ResolveFailedException',
+  'Scope',
   'resolve',
   'implements',
   'ImplementsException',

@@ -10,7 +10,7 @@ class ImplementsException(Exception):
 
 def implements(*T):
   def inner(cls):
-    cls.__identity = []
+    cls.__implements = []
     for t in T:
       t_methods = inspect.getmembers(t, predicate=lambda x: inspect.isfunction(x) or inspect.ismethod(x))
       c_methods = inspect.getmembers(cls, predicate=lambda x: inspect.isfunction(x) or inspect.ismethod(x))
@@ -29,6 +29,6 @@ def implements(*T):
           missing = True
       if missing:
         raise ImplementsException("Invalid @implements decorator on '%s': %r" % (t.__name__, sig), sig)
-      cls.__identity.append(t)
+      cls.__implements.append(t)
     return cls
   return inner
