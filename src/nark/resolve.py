@@ -52,7 +52,6 @@ def resolve(scope):
   def inner(cls):
     old_init = cls.__init__
     spec = inspect.getargspec(old_init)
-    print(spec)
     def __init__(self, *args, **kwargs):
       kwargs_new = {}
       if spec.defaults is not None and len(spec.defaults) > 0:
@@ -60,16 +59,12 @@ def resolve(scope):
           offset = len(spec.defaults) - i - 1
           value = spec.defaults[i]
           key = spec.args[len(spec.args) - 1 - offset]
-          print("Query: %s --> %s" % (key, value))
           if inspect.isclass(value):
             I = scope.resolve(value)
             kwargs_new[key] = I
       for key in kwargs.keys():
-        print("Checking key: " + key)
         if key not in kwargs_new.keys():
-          print("!!! Set new key: %s" % key)
           kwargs_new[key] = kwargs[key]
-      print("Args passed: %r" % kwargs_new)
       old_init(self, *args, **kwargs_new)
     cls.__init__ = __init__
     return cls
@@ -167,7 +162,7 @@ class Binding(object):
       rtn = self.__type()
     except Exception:
       e = exception()
-      raise ResolveFailedException(self.type, e)
+      raise ResolveFailedException(self.__type, e)
     return rtn
 
   def __repr__(self):

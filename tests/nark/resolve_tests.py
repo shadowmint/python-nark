@@ -302,27 +302,85 @@ class ResolverTests(unittest.TestCase):
 
     @resolve(c)
     class HasDeps(object):
-      def __init__(self, x, y, valuer=IValuer, printer=IPrinter, *kargs, **kwargs):
+      def __init__(self, x, y, valuer=IValuer, printer=IPrinter, **kwargs):
         self.valuer = valuer
         self.printer = printer
         self.x = x
         self.y = y 
-        self.other = kargs[0]
-        self.left = kwargs["left"]
+        self.other = kwargs["other"]
 
     a = Assert()
 
-    instance = HasDeps(5, 10, 15, left="right")
+    instance = HasDeps(5, 10, other=15)
 
     output1 = instance.printer.prints("hello")
     output2 = instance.valuer.value(10, 10)
 
-    a.equals(output1, "blah", "Failed to use mock printer")
+    a.equals(output1, "prints-hello", "Failed to use mock printer")
     a.equals(output2, 20, "Failed to resolve valuer")
     a.equals(instance.x, 5, "Invalid x value")
     a.equals(instance.y, 10, "Invalid y value")
     a.equals(instance.other, 15, "Invalid kargs value")
-    a.equals(instance.left, "right", "Invalid kwargs value")
+
+  def test_inject_with_no_binding_fails(self):
+    
+    class IPrinter(object):
+      def prints(self, msg):
+        pass
+
+    @implements(IPrinter)
+    class Printer(object):
+      def prints(self, msg):
+        return "prints-" + str(msg)
+
+    c = Scope()
+
+    @resolve(c)
+    class HasDeps(object):
+      def __init__(self, printer=IPrinter):
+        self.printer = printer
+
+    a = Assert()
+
+    failed = False
+    try: 
+      instance = HasDeps(5, 10, other=15)
+    except ResolveFailedException:
+      failed = True
+
+    a.true(failed, "Resolved a missing type")
+
+  def test_inject_with_stupid_type_fails(self):
+    
+    class IPrinter(object):
+      def prints(self, msg):
+        pass
+
+    @implements(IPrinter)
+    class Printer(object):
+      def __init__(self, stupid):
+        pass
+      def prints(self, msg):
+        return "prints-" + str(msg)
+
+    c = Scope()
+    c.register(Printer)
+
+    @resolve(c)
+    class HasDeps(object):
+      def __init__(self, printer=IPrinter):
+        self.printer = printer
+
+    a = Assert()
+
+    failed = False
+    try: 
+      instance = HasDeps(5, 10, other=15)
+    except ResolveFailedException:
+      e = exception()
+      failed = True
+
+    a.true(failed, "Resolved a bad type")
 
 
 if __name__ == "__main__":
