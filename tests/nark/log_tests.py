@@ -20,12 +20,12 @@ class LogTests(unittest.TestCase):
 
   def test_can_create_logger(self):
     a = nark.Assert()
-    i = nark.LogManager.get_logger()
+    i = nark.Logging.get()
     a.not_null(i, "Unable to create log instance")
 
   def test_can_log_message(self):
     a = nark.Assert()
-    i = nark.LogManager.get_logger()
+    i = nark.Logging.get()
     i.debug("Hello %s", "world")
     i.info("Hello %s", "world")
     i.warning("Hello %s", "world")

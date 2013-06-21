@@ -272,7 +272,7 @@ class ResolverTests(unittest.TestCase):
     a.equals(instance.other, 15, "Invalid kargs value")
     a.equals(instance.left, "right", "Invalid kwargs value")
 
-  def test_inject_instance_and_it_isnt_resolved(self):
+  def test_combied_keyargs_are_still_resolved(self):
     
     class IPrinter(object):
       def prints(self, msg):
@@ -307,11 +307,19 @@ class ResolverTests(unittest.TestCase):
         self.printer = printer
         self.x = x
         self.y = y 
+<<<<<<< HEAD
         self.other = kwargs["other"]
 
     a = Assert()
 
     instance = HasDeps(5, 10, other=15)
+=======
+        self.left = kwargs["left"]
+
+    a = Assert()
+
+    instance = HasDeps(5, 10, left="right", printer=MockPrinter())
+>>>>>>> aa0c54b... updated logging
 
     output1 = instance.printer.prints("hello")
     output2 = instance.valuer.value(10, 10)

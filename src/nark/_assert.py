@@ -12,7 +12,7 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from .log_manager import LogManager
+from .logging import Logging
 from .exception import exception
 
 
@@ -20,7 +20,7 @@ class Assert:
   """ Test helper """
   
   def __init__(self):
-    self._logger = LogManager.get_logger(2)
+    self._logger = Logging.get(2)
     
   def true(self, value, message):
     if not value:

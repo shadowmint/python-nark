@@ -83,6 +83,6 @@ class JobTalk(nark.process.Worker):
     self.api.event_loop(False)
 
 
-log = LogManager.get_logger()
+log = Logging.get()
 if __name__ == "__main__":
     unittest.main()

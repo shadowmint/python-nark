@@ -46,4 +46,4 @@ class Listener:
 
 
 # Logging
-log = LogManager.get_logger()
+log = Logging.get()

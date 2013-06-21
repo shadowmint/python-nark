@@ -14,7 +14,7 @@
 from __future__ import absolute_import
 from ._assert import Assert
 from .enum import enum, bitflags
-from .log_manager import LogManager
+from .logging import Logging
 from .factory import Factory
 from .assets import Assets, BadFileException
 from .implements import implements, ImplementsException
@@ -28,7 +28,7 @@ __all__ = [
   'enum',
   'bitflags',
   'Assert',
-  'LogManager',
+  'Logging',
   'Factory',
   'Assets',
   'BadFileException',

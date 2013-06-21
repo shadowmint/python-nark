@@ -14,7 +14,7 @@
 from __future__ import absolute_import
 from .event import Event
 from .listener import Listener
-from nark import LogManager, exception
+from nark import Logging, exception
 
 
 class Messenger(object):
@@ -147,4 +147,4 @@ class Messenger(object):
       
 
 # Logging
-log = LogManager.get_logger()
+log = Logging.get()
