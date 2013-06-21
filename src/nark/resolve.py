@@ -59,9 +59,16 @@ def resolve(scope):
           offset = len(spec.defaults) - i - 1
           value = spec.defaults[i]
           key = spec.args[len(spec.args) - 1 - offset]
+<<<<<<< HEAD
           if inspect.isclass(value):
             I = scope.resolve(value)
             kwargs_new[key] = I
+=======
+          if key not in kwargs.keys():
+            if inspect.isclass(value):
+              I = scope.resolve(value)
+              kwargs_new[key] = I
+>>>>>>> b08e720... updated and fixed resolve tests
       for key in kwargs.keys():
         if key not in kwargs_new.keys():
           kwargs_new[key] = kwargs[key]

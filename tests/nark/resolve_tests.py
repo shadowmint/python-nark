@@ -272,7 +272,7 @@ class ResolverTests(unittest.TestCase):
     a.equals(instance.other, 15, "Invalid kargs value")
     a.equals(instance.left, "right", "Invalid kwargs value")
 
-  def test_combied_keyargs_are_still_resolved(self):
+  def test_passing_mock_as_argument_works(self):
     
     class IPrinter(object):
       def prints(self, msg):
@@ -297,7 +297,7 @@ class ResolverTests(unittest.TestCase):
     c.register(Valuer)
 
     class MockPrinter(object):
-      def prints(object):
+      def prints(self, msg):
         return "blah"
 
     @resolve(c)
@@ -328,6 +328,7 @@ class ResolverTests(unittest.TestCase):
     a.equals(output2, 20, "Failed to resolve valuer")
     a.equals(instance.x, 5, "Invalid x value")
     a.equals(instance.y, 10, "Invalid y value")
+<<<<<<< HEAD
     a.equals(instance.other, 15, "Invalid kargs value")
 
   def test_inject_with_no_binding_fails(self):
@@ -389,6 +390,89 @@ class ResolverTests(unittest.TestCase):
       failed = True
 
     a.true(failed, "Resolved a bad type")
+=======
+    a.equals(instance.left, "right", "Invalid kwargs value")
+>>>>>>> b08e720... updated and fixed resolve tests
+
+  def test_passing_stupid_class_fails(self):
+    
+    class IPrinter(object):
+      def prints(self, msg):
+        pass
+
+    class IValuer(object):
+      def value(self, a, b):
+        pass
+
+    @implements(IPrinter)
+    class Printer(object):
+      def __init__(self, value):  # <-- Stupid, needs zero value constructor
+        pass
+      def prints(self, msg):
+        return "prints-" + str(msg)
+
+    @implements(IValuer)
+    class Valuer(object):
+      def value(self, a, b):
+        return a + b
+
+    c = Scope()
+    c.register(Printer)
+    c.register(Valuer)
+
+    @resolve(c)
+    class HasDeps(object):
+      def __init__(self, valuer=IValuer, printer=IPrinter):
+        self.valuer = valuer
+        self.printer = printer
+
+    a = Assert()
+
+    failed = False
+    try:
+      instance = HasDeps()
+    except ResolveFailedException:
+      e = exception()
+      failed = True
+      print(e)
+      a.equals(e.type, Printer, "Didnt set correct exception value")
+    a.true(failed, "Didn't fail")
+
+  def test_when_failing_to_resolve_type_exception_has_type_set(self):
+    
+    class IPrinter(object):
+      def prints(self, msg):
+        pass
+
+    class IValuer(object):
+      def value(self, a, b):
+        pass
+
+    @implements(IValuer)
+    class Valuer(object):
+      def value(self, a, b):
+        return a + b
+
+    c = Scope()
+    c.register(Valuer)
+
+    @resolve(c)
+    class HasDeps(object):
+      def __init__(self, valuer=IValuer, printer=IPrinter):
+        self.valuer = valuer
+        self.printer = printer
+
+    a = Assert()
+
+    failed = False
+    try:
+      instance = HasDeps()
+    except ResolveFailedException:
+      e = exception()
+      failed = True
+      print(e)
+      a.equals(e.type, IPrinter, "Didnt set correct exception value")
+    a.true(failed, "Didn't fail")
 
 
 if __name__ == "__main__":
