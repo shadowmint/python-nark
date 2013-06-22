@@ -69,13 +69,42 @@ class ImplementsTests(unittest.TestCase):
 
     a.true(failed, "Could decorate an invalid class")
 
+  def test_cannot_decorate_class_without_correct_props(self):
+    a = Assert()
+
+    class IType(object):
+      prop1 = None
+      prop2 = None
+      def xxx(self):
+        pass
+
+    @implements(IType)
+    class ImplGood(object):
+      prop1 = "X"
+      prop2 = "Y"
+      def __init__(self):
+        self.prop1 = p1
+        self.prop2 = p2
+      def xxx(self):
+        pass
+
+    failed = False
+    try:
+      @implements(IType)
+      class ImplBad(object):
+        prop2 = ""
+        def xxx(self):
+          pass
+    except ImplementsException:
+      e = exception()
+      print("%r", e.signature)
+      a.false(e.signature["prop1"], "Didn't detect missing property")
+      a.true(e.signature["prop2"], "Didn't detect existing property")
+      a.equals(len(e.signature.keys()), 3, "Found some other crazy thing on class")
+      failed = True
+
+    a.true(failed, "Could decorate an invalid class")
+
 
 if __name__ == "__main__":
   unittest.main()
-
-
-
-if __name__ == "__main__":
-  unittest.main()
-
-

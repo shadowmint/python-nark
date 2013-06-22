@@ -6,10 +6,10 @@ else
 fi
 
 echo "-- With python2.7"
-python2.7 $ITEM 2>&1 | grep ^ERROR
+python2.7 $ITEM 2>&1 | grep "^ FAILED"
 
 echo "-- With python3.3"
-python3.3 $ITEM 2>&1 | grep ^ERROR
+python3.3 $ITEM 2>&1 | grep "^ FAILED"
 
 echo "-- With pypy"
-pypy $ITEM 2>&1 | grep ^ERROR
+pypy $ITEM 2>&1 | grep "^ FAILED"
