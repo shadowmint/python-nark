@@ -307,28 +307,19 @@ class ResolverTests(unittest.TestCase):
         self.printer = printer
         self.x = x
         self.y = y 
-<<<<<<< HEAD
         self.other = kwargs["other"]
 
     a = Assert()
 
-    instance = HasDeps(5, 10, other=15)
-=======
-        self.left = kwargs["left"]
-
-    a = Assert()
-
-    instance = HasDeps(5, 10, left="right", printer=MockPrinter())
->>>>>>> aa0c54b... updated logging
+    instance = HasDeps(5, 10, other=15, printer=MockPrinter())
 
     output1 = instance.printer.prints("hello")
     output2 = instance.valuer.value(10, 10)
 
-    a.equals(output1, "prints-hello", "Failed to use mock printer")
+    a.equals(output1, "blah", "Failed to use mock printer")
     a.equals(output2, 20, "Failed to resolve valuer")
     a.equals(instance.x, 5, "Invalid x value")
     a.equals(instance.y, 10, "Invalid y value")
-<<<<<<< HEAD
     a.equals(instance.other, 15, "Invalid kargs value")
 
   def test_inject_with_no_binding_fails(self):
@@ -390,9 +381,6 @@ class ResolverTests(unittest.TestCase):
       failed = True
 
     a.true(failed, "Resolved a bad type")
-=======
-    a.equals(instance.left, "right", "Invalid kwargs value")
->>>>>>> b08e720... updated and fixed resolve tests
 
   def test_passing_stupid_class_fails(self):
     
@@ -434,7 +422,7 @@ class ResolverTests(unittest.TestCase):
     except ResolveFailedException:
       e = exception()
       failed = True
-      print(e)
+      a.trace(e)
       a.equals(e.type, Printer, "Didnt set correct exception value")
     a.true(failed, "Didn't fail")
 
@@ -470,7 +458,7 @@ class ResolverTests(unittest.TestCase):
     except ResolveFailedException:
       e = exception()
       failed = True
-      print(e)
+      a.trace(e)
       a.equals(e.type, IPrinter, "Didnt set correct exception value")
     a.true(failed, "Didn't fail")
 
