@@ -21,6 +21,7 @@ from .implements import implements, ImplementsException
 from .resolve import ResolveFailedException, Scope, resolve
 from .exception import exception
 from .run import run, BadCommandException
+from .dynamic import Dynamic
 import nark.process
 
 
@@ -41,4 +42,5 @@ __all__ = [
   'run',
   'BadCommandException',
   'process',
+  'Dynamic',
 ]

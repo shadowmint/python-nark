@@ -13,42 +13,55 @@
 
 import unittest
 import bootstrap
-import nark
-
-
-
-class Dynamic(object):
-
-  def __getattr__(self, key):
-    if key not in self.__dict__.keys():
-      self.__dict__[key] = Dynamic()
-    return self.__dict__[key]
-
-  def __setattr__(self, key, value):
-    self.__dict__[key] = valueo
-
-  # TODO: Make iterable
-  # test if blah in dy
-  # test for k in blah
-
-  # TODO: Convert recursively into a dictionary:
-  def import_dict(): 
-    pass
-
-  # TODO: Convert recursively from dictionary:
-  def export_dict(self, source):
-    pass
+from nark import *
 
 
 class DynamicTests(unittest.TestCase):
 
   def test_can_create_logger(self):
-    a = nark.Assert()
+    a = Assert()
     i = Dynamic()
     a.not_null(i, "Unable to create instance")
 
+  def test_can_iterate_over_properties(self):
+    a = Assert()
+    i = Dynamic()
+    i.x = "Y"
+    i.y = "Z"
+    i.z = "Q"
+
+    count = 0
+    for k, v in i:
+      count += 1
+
+    a.equals(count, 3, "Didn't find all keys")
+
+  def test_can_turn_into_dict(self):
+    a = Assert()
+    i = Dynamic()
+    i.x = "Y"
+    i.y = "Z"
+    i.z = "Q"
+    i.sub.x = "Y"
+    i.sub.y = "X"
+
+    d = dict(iter(i))
+
+    a.equals(d["x"], "Y", "Failed to convert to dict")
+    a.equals(d["z"], "Q", "Failed to convert to dict")
+    a.equals(d["sub"]["x"], "Y", "Failed to convert to dict")
+
+  def test_can_load_from_dict(self):
+    a = Assert()
+    src = {"A" : "B", "C" : "D", "E" : {"F" : "G"}}
+    i = Dynamic(src)
+
+    a.equals(i.A, "B", "Didn't convert from dict successfully")
+    a.equals(i.C, "D", "Didn't convert from dict successfully")
+    a.equals(i.E.F, "G", "Didn't convert from dict successfully")
+
   def test_can_set_properties(self):
-    a = nark.Assert()
+    a = Assert()
     i = Dynamic()
 
     i.value = "value"
@@ -58,7 +71,7 @@ class DynamicTests(unittest.TestCase):
     a.equals(i.thing, "thing", "Didn't set value right")
 
   def test_can_set_chained_properties(self):
-    a = nark.Assert()
+    a = Assert()
     i = Dynamic()
 
     i.value.xxx = "value"
@@ -67,21 +80,30 @@ class DynamicTests(unittest.TestCase):
     a.equals(i.value.xxx, "value", "Didn't set value right")
     a.equals(i.value.yyy, "value2", "Didn't set value right")
 
-  def test_cannot_resolve_missing_properties(self):
-    a = nark.Assert()
+  def test_in_behaviour_is_not_stupid(self):
+    a = Assert()
     i = Dynamic()
 
     i.value.xxx = "value"
     i.value.yyy = "value2"
 
-    failed = False
-    try:
-      k = i.value.zzz
-    except AttributeError:
-      e = exception()
-      print(e)
-      failed = True
-    a.true(failed, "Failed to raise exception")
+    found = "xxx" in i.value.keys()
+    a.true(found, "Couldn't find key")
+
+    found = "yyy" in i.value
+    a.true(found, "Couldn't find key")
+
+    found = "yyy" in i.value.values()
+    a.false(found, "Found key as value")
+
+    found = "value" in i.value.values()
+    a.true(found, "Couldn't find value")
+
+    found = "value" in i.value.keys()
+    a.false(found, "Found value as key")
+
+    found = "value" in i.value
+    a.false(found, "Found value as key")
 
 
 if __name__ == "__main__":
