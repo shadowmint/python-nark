@@ -22,7 +22,7 @@ from .resolve import ResolveFailedException, Scope, resolve
 from .exception import exception
 from .run import run, BadCommandException
 from .dynamic import Dynamic
-from .time import DateTime, Timestamp
+from .time_ import DateTime, Timestamp
 import nark.process
 
 

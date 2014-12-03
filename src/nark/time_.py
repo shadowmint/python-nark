@@ -1,4 +1,3 @@
-import pytz
 import datetime as pytm
 
 
@@ -8,11 +7,13 @@ class DateTime(object):
   @staticmethod
   def now():
     """Return now as a UTC time """
+    import pytz
     return pytz.UTC.localize(pytm.datetime.now())
 
   @staticmethod
   def as_timestamp(dt):
     """Convert a datetime into a timestamp """
+    import pytz
     epoch = pytm.datetime.utcfromtimestamp(0)
     epoch = epoch.replace(tzinfo=pytz.UTC)
     return (dt - epoch).total_seconds()
@@ -24,6 +25,7 @@ class Timestamp(object):
   @staticmethod
   def as_datetime(timestamp):
     """Convert a timestamp into a datetime """
+    import pytz
     try:
       timestamp = float(timestamp)
     except Exception:

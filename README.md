@@ -57,3 +57,13 @@ Helpful python utils.
 
 ### run
     run("ls", "-al")
+
+### Running tests...
+
+Use:
+
+    python tests/nark/dynamic_tests.py
+
+or:
+
+    tests/runner

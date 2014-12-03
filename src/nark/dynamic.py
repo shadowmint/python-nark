@@ -62,6 +62,23 @@ class Dynamic(object):
   def __setattr__(self, key, value):
     self.__dict__[key] = value
 
+  def __getitem__(self, key):
+    if key not in self.__dict__.keys():
+      self.__dict__[key] = Dynamic()
+    return self.__dict__[key]
+
+  def __setitem__(self, key, value):
+    self.__dict__[key] = value
+
+  def __call__(self, *args, **kwargs):
+    return None
+
+  def __str__(self):
+    rtn = dict(self)
+    for key in rtn.keys():
+      rtn[key] = str(rtn[key])
+    return str(rtn)
+
   def __iter__(self):
     for k in self.__dict__.keys():
       value = self.__dict__[k]

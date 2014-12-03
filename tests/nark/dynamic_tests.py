@@ -105,6 +105,27 @@ class DynamicTests(unittest.TestCase):
     found = "value" in i.value
     a.false(found, "Found value as key")
 
+  def test_set_item(self):
+    a = Assert()
+    i = Dynamic()
+    i['one'] = 'two'
+    a.true(i.one == 'two', "Set item failed")
+
+  def test_get_item(self):
+    a = Assert()
+    i = Dynamic()
+    i.one = 'two'
+    a.true(i['one'] == 'two', "Get item failed")
+
+  def test_call_doesnt_fail(self):
+    """NB. Template will often check for __str__ and invoke it. Test it works. """
+    a = Assert()
+    i = Dynamic()
+    i.one = "one"
+    i.two = 2
+    a.true(None == i.foo(), 'Call failed')
+    a.true("{'foo': '{}', 'two': '2', 'one': 'one'}" == str(i), 'string mapping failed')
+
 
 if __name__ == "__main__":
   unittest.main()
