@@ -81,6 +81,8 @@ class Extension(object):
         fail('Failed to import binding for {}'.format(key), e)
       except ValueError as e:
         fail('Invalid binding for {}'.format(key), e)
+      except AttributeError as e:
+        fail('Invalid binding for {}'.format(key), e)
       except KeyError:
         fail('No config binding for {}'.format(key))
     else:
