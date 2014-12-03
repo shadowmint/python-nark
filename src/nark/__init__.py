@@ -22,6 +22,7 @@ from .resolve import ResolveFailedException, Scope, resolve
 from .exception import exception
 from .run import run, BadCommandException
 from .dynamic import Dynamic
+from .time import DateTime, Timestamp
 import nark.process
 
 
@@ -43,4 +44,6 @@ __all__ = [
   'BadCommandException',
   'process',
   'Dynamic',
+  'DateTime',
+  'Timestamp'
 ]
