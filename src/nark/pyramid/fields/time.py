@@ -1,5 +1,5 @@
 import sqlalchemy
-from nark.time import DateTime, Timestamp
+from nark import DateTime, Timestamp
 
 
 class UTCDateTime(sqlalchemy.types.TypeDecorator):
