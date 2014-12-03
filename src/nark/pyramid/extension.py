@@ -25,8 +25,26 @@ class RequiredConfigError(Exception):
 class Extension(object):
   """ A helper module for writing pyramid extensions
 
-      You can easily use it like this:
+  You can easily use it like this:
 
+      from nark.pyramid import Extension
+
+      class Config(Extension):
+        def __init__(self, config):
+          super(Config, self).__init__(config)
+          self.keys.ROOT = 'pyramid_admin.root'
+          self.keys.OVERRIDE = 'pyramid_admin.override'
+          self.defaults.ROOT = 'home'
+
+  Then invoke this from the extension like:
+
+      def includeme(config):
+        ext = Config(config)
+        root = ext.resolve(ext.keys.ROOT, required=True)
+        config.add_route(...)
+
+        module = ext.resolve(ext.keys.PERMISSIONS, as_module=True)
+        if module is not None:
           ...
   """
 
@@ -38,6 +56,9 @@ class Extension(object):
 
   def _default(self, key):
     """Override this function to provide defaults for types """
+    for v in self.keys.keys():
+      if key == self.keys[v]:
+        key = v
     if key in self.defaults:
       return self.defaults[key]
     return None
