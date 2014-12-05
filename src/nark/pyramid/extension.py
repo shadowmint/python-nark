@@ -52,7 +52,10 @@ class Extension(object):
     self.keys = Dynamic()
     self.defaults = Dynamic()
     self.config = config
-    self.settings = config.get_settings()
+    if hasattr(config, 'get_settings'):
+      self.settings = config.get_settings()
+    else:
+      self.settings = config
 
   def _default(self, key):
     """Override this function to provide defaults for types """
